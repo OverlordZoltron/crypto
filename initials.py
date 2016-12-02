@@ -5,5 +5,8 @@ def get_initials(fullname):
         initials += split_name[i][0]
     return initials.upper()
 
-answer = get_initials("Daniel Day Lewis")
-print("The initials of 'Daniel Day Lewis' are", answer)
+#answer = get_initials("Daniel Day Lewis")
+#print("The initials of 'Daniel Day Lewis' are", answer)
+
+user_input = input("What is your name?")
+print(get_initials(user_input))
