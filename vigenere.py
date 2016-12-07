@@ -21,19 +21,20 @@ def rotate_character(char, rot):
     else:
         return char
 
-def encrypt(text, rot):
-    #create new string
-    new_text = ""
-    #for each char in the text
-    for char in range(len(text)):
-        #rotate that character according to the ROT and put it in the new string
-        new_text += rotate_character(text[char],int(rot))
-    return new_text
+
+def encrypt(message, key):
+    idx = 0
+    cipher = []
+    while idx < len(message):
+        cipher.append(rotate_character(message[idx], alphabet_position(key[idx % len(key)])))
+        idx += 1
+    return ''.join(cipher)
+
 
 def main():
     message = input("Type a message:\n")
     # 'The crow flies at midnight!
-    rotate = input("Rotate by:")
+    rotate = input("Encryption key:\n")
     # boom
     print(encrypt(message, rotate))
 
