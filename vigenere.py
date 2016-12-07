@@ -11,12 +11,13 @@ def alphabet_position(letter):
 
 
 def rotate_character(char, rot):
+    r = alphabet_position(rot)
     #check if lowercase
     if (ord(char) >= 97) and (ord(char) <= 122):
-        return chr(97+(alphabet_position(char)+rot)%26)
+        return chr(97+(alphabet_position(char)+r)%26)
     #check if uppercase
     elif (ord(char) >= 65) and (ord(char) <= 90):
-        return chr(65+(alphabet_position(char)+rot)%26)
+        return chr(65+(alphabet_position(char)+r)%26)
     #if neither, return the character
     else:
         return char
@@ -26,13 +27,13 @@ def encrypt(message, key):
     idx = 0
     cipher = []
     while idx < len(message):
-        cipher.append(rotate_character(message[idx], alphabet_position(key[idx % len(key)])))
+        cipher.append(rotate_character(message[idx], key[idx % len(key)]))
         idx += 1
     return ''.join(cipher)
 
 
 def main():
-    message = input("Type a message:\n")
+    message = input("Message:\n")
     # 'The crow flies at midnight!
     rotate = input("Encryption key:\n")
     # boom
