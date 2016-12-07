@@ -17,3 +17,11 @@ def rotate_character(char, rot):
     #if neither, return the character
     else:
         return char
+
+def encrypt(text, rot):
+    new_text = ""
+    for char in range(len(text)):
+        new_text += rotate_character(text[char],int(rot))
+    return new_text
+
+print(encrypt(input("A message to cypher"),input("Rotate by:")))
