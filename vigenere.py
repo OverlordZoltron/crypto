@@ -1,3 +1,5 @@
+import itertools
+
 def alphabet_position(letter):
     # check if lowercase
     if (ord(letter) >= 97) and (ord(letter) <= 122):
@@ -11,13 +13,12 @@ def alphabet_position(letter):
 
 
 def rotate_character(char, rot):
-    r = alphabet_position(rot)
     #check if lowercase
     if (ord(char) >= 97) and (ord(char) <= 122):
-        return chr(97+(alphabet_position(char)+r)%26)
+        return chr(97+(alphabet_position(char)+rot)%26)
     #check if uppercase
     elif (ord(char) >= 65) and (ord(char) <= 90):
-        return chr(65+(alphabet_position(char)+r)%26)
+        return chr(65+(alphabet_position(char)+rot)%26)
     #if neither, return the character
     else:
         return char
@@ -26,10 +27,22 @@ def rotate_character(char, rot):
 def encrypt(message, key):
     idx = 0
     cipher = []
+
+    x = itertools.cycle(key)
+
+    key_str = "".join(next(x) if c.isalpha() else c for c in message)
+
     while idx < len(message):
-        cipher.append(rotate_character(message[idx], key[idx % len(key)]))
+        cipher.append(rotate_character(message[idx], alphabet_position(key_str[idx])))
         idx += 1
     return ''.join(cipher)
+    # while idx < len(message):
+    #     if message[idx].isalpha():
+    #         cipher.append(rotate_character(message[idx], alphabet_position(key[idx % len(key)])))
+    #     else:
+    #         cipher.append(message[idx])
+    #     idx += 1
+    # return ''.join(cipher)
 
 
 def main():
