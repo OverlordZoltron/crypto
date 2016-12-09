@@ -22,11 +22,14 @@ def user_input_is_valid(cl_args):
 
 
 def main():
+    if len(argv) == 1:
+        print("usage: python3 " + argv[0] + " n")
+        exit()
     if user_input_is_valid(argv):
         message = input("Type a message:\n")
         print(encrypt(message, int(argv[1])))
     else:
-        print("usage: python3 " + argv[0] + argv[1])
+        print("usage: python3 " + argv[0] + " " + argv[1])
         exit()
 
 
