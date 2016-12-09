@@ -1,14 +1,5 @@
-from helpers import rotate_character
 from sys import argv, exit
-
-
-def user_input_is_valid(cl_args):
-    if cl_args[1].isdigit():
-        return True
-    elif len(cl_args) == 1:
-        return False
-    else:
-        return False
+from helpers import rotate_character
 
 
 def encrypt(text, rot):
@@ -21,10 +12,19 @@ def encrypt(text, rot):
     return new_text
 
 
+def user_input_is_valid(cl_args):
+    if len(cl_args) == 1:
+        return False
+    elif cl_args[1].isdigit():
+        return True
+    else:
+        return False
+
+
 def main():
     if user_input_is_valid(argv):
         message = input("Type a message:\n")
-        print(encrypt(message, argv[1]))
+        print(encrypt(message, int(argv[1])))
     else:
         print("usage: python3 " + argv[0] + argv[1])
         exit()

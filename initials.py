@@ -9,8 +9,11 @@ def get_initials(fullname):
     #return the accumulated initials in uppercase
     return initials.upper()
 
-#answer = get_initials("Daniel Day Lewis")
-#print("The initials of 'Daniel Day Lewis' are", answer)
 
-user_input = input("What is your name?")
-print(get_initials(user_input))
+def main():
+    user_input = input("What is your name?")
+    print(get_initials(user_input))
+
+
+if __name__ == '__main__':
+    main()
