@@ -1,4 +1,15 @@
 from helpers import rotate_character
+from sys import argv, exit
+
+
+def user_input_is_valid(cl_args):
+    if cl_args[1].isdigit():
+        return True
+    elif len(cl_args) == 1:
+        return False
+    else:
+        return False
+
 
 def encrypt(text, rot):
     #create new string
@@ -9,12 +20,14 @@ def encrypt(text, rot):
         new_text += rotate_character(text[char], int(rot))
     return new_text
 
+
 def main():
-    message = input("Type a message:\n")
-    # 'The crow flies at midnight!
-    rotate = input("Rotate by:")
-    # boom
-    print(encrypt(message, rotate))
+    if user_input_is_valid(argv):
+        message = input("Type a message:\n")
+        print(encrypt(message, argv[1]))
+    else:
+        print("usage: python3 " + argv[0] + argv[1])
+        exit()
 
 
 if __name__ == '__main__':

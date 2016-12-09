@@ -14,13 +14,6 @@ def encrypt(message, key):
         cipher.append(rotate_character(message[idx], alphabet_position(key_str[idx])))
         idx += 1
     return ''.join(cipher)
-    # while idx < len(message):
-    #     if message[idx].isalpha():
-    #         cipher.append(rotate_character(message[idx], alphabet_position(key[idx % len(key)])))
-    #     else:
-    #         cipher.append(message[idx])
-    #     idx += 1
-    # return ''.join(cipher)
 
 
 def main():
